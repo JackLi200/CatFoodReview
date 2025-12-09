@@ -1,4 +1,4 @@
-# CatFoodReview
+# Cat Food Review Sentiment & Comparative Ranking Tool
 Lightweight NLP pipeline to compare dry cat food products by analyzing customer reviews: fetch open data, clean and score sentiment, extract themes/keywords, aggregate metrics, and visualize differences.
 
 ## What It Does
