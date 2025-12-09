@@ -1,0 +1,6 @@
+product_id,brand,product_name,flavor,size_variant,source_site,source_url,notes
+p1,Purina ONE,Tender Selects Blend Adult Dry Cat Food,Chicken,16 lb bag,Chewy,https://www.chewy.com/purina-one-tender-selects-blend-real/dp/119442,Popular budget option; lots of reviews
+p2,Blue Buffalo,Wilderness High Protein Natural Adult Dry Cat Food,Chicken,12 lb bag,Amazon,https://www.amazon.com/Blue-Buffalo-Wilderness-Protein-Natural/dp/B002UT92EY?th=1,Higher protein; mid-premium price
+p3,Hill's Science Diet,Adult Indoor Dry Cat Food,Chicken,15.5 lb bag,Chewy,https://www.chewy.com/hills-science-diet-adult-indoor/dp/34081,Indoor formula; strong vet brand
+p4,IAMS,Proactive Health Indoor Weight & Hairball Care Dry Cat Food,Chicken,7 lb bag,Amazon,https://www.amazon.com/Iams-Proactive-Hairball-Chicken-Packaging/dp/B01BKYFR7K/?th=1,Mass-market with hairball/weight focus
+p5,Royal Canin,Feline Care Nutrition Indoor Adult Dry Cat Food,Chicken,15 lb bag,Petco,https://www.petco.com/shop/en/petcostore/product/royal-canin-feline-health-nutrition-indoor-adult-27-839957,Premium indoor option; smaller review volume
