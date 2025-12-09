@@ -35,7 +35,7 @@ To obtain the open dataset manually (if needed):
 ## Exploring More Brands/Products
 - Add rows to `data/raw/products.csv` (product_id, brand, product_name, flavor, size, notes).
 - Add matching ASINs to `data/raw/review_urls.csv` (`product_id,asin,...`). You can find ASINs via the metadata file or by searching Amazon product pages.
-- Rerun the pipeline:
+- Rerun the pipeline(if you have done running the pipeline already):
   ```
   python src/fetch_dataset.py --products data/raw/products.csv --review_urls data/raw/review_urls.csv --out_dir data/raw/ --max_per_product 400 --max_scan 3000000
   python src/clean.py --inp data/raw --out data/clean --min_length 20
