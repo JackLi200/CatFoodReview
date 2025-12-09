@@ -1,11 +1,20 @@
 # CatFoodReview
-Lightweight pipeline to fetch, clean, analyze, and summarize dry cat food reviews with sentiment and keyword/theme extraction.
+Lightweight NLP pipeline to compare dry cat food products by analyzing customer reviews: fetch open data, clean and score sentiment, extract themes/keywords, aggregate metrics, and visualize differences.
+
+## What It Does
+- Pulls an open Amazon Pet Supplies review dataset (UCSD 5-core) filtered to selected cat food products.
+- Cleans reviews (dedupe, drop junk, normalize, parse dates).
+- Labels sentiment with VADER (pos/neu/neg) and computes rating distributions.
+- Extracts top TF-IDF keywords per product and sentiment bucket (with extra stopword/brand filtering).
+- Aggregates product-level metrics (% pos/neg/neu, rating breakdown, verified %, simple score = pos% - neg%).
+- Generates quick visuals (sentiment bars, ratings vs sentiment score, rating distribution, top terms).
 
 ## Project Structure
-- `data/raw/`: source data (products.csv, downloaded datasets/html, raw reviews)
+- `data/raw/`: source data (products.csv, review_urls.csv, downloaded datasets, raw reviews)
 - `data/clean/`: cleaned and sentiment-labeled reviews
-- `data/outputs/`: keywords, comparisons, figures
+- `data/outputs/`: keywords, comparison tables, figures
 - `src/`: scripts (fetch, clean, sentiment, keywords, aggregate, visualize)
+- `requirements.txt`: Python deps
 
 ## Setup
 ```bash
@@ -17,12 +26,13 @@ Downloads UCSD Amazon Pet Supplies 5-core dataset, filters by ASINs, and writes 
 ```bash
 python src/fetch_dataset.py --products data/raw/products.csv --out_dir data/raw/ --max_per_product 400 --max_scan 3000000 --review_urls data/raw/review_urls.csv
 ```
+Large downloaded files (e.g., `data/raw/Pet_Supplies_5.json.gz`, `data/raw/meta_Pet_Supplies.json.gz`) should NOT be committed; add `data/raw/*.json.gz` to `.gitignore`.
 
 To obtain the open dataset manually (if needed):
 - Download `https://jmcauley.ucsd.edu/data/amazon_v2/categoryFilesSmall/Pet_Supplies_5.json.gz` into `data/raw/`.
 - Optionally download metadata `https://jmcauley.ucsd.edu/data/amazon_v2/metaFiles/meta_Pet_Supplies.json.gz` into `data/raw/`.
 
-Exploring more brands/products:
+## Exploring More Brands/Products
 - Add rows to `data/raw/products.csv` (product_id, brand, product_name, flavor, size, notes).
 - Add matching ASINs to `data/raw/review_urls.csv` (`product_id,asin,...`). You can find ASINs via the metadata file or by searching Amazon product pages.
 - Rerun the pipeline:
@@ -65,3 +75,9 @@ Generate PNGs for sentiment distribution, rating score/lines, rating distributio
 python src/visualize.py --comparison data/outputs/comparison.csv --keywords data/outputs/keywords.csv --out_dir data/outputs/figures --top_n 10
 ```
 
+## Outputs
+- `data/clean/clean_*.csv`: cleaned reviews per product
+- `data/clean/with_sentiment_*.csv`: sentiment scores/labels added
+- `data/outputs/keywords.{csv,json}`: top TF-IDF terms per product/bucket
+- `data/outputs/comparison.{csv,json}`: aggregated metrics and simple scores
+- `data/outputs/figures/`: sentiment/rating/keyword plots per product
