@@ -1,0 +1,7 @@
+pandas
+requests
+beautifulsoup4
+vaderSentiment
+scikit-learn
+matplotlib
+python-dateutil
